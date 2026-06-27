@@ -1,0 +1,3123 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+index.html
+package.json
+postcss.config.js
+public/favicon.svg
+README.md
+setup_frontend.bat
+src/App.tsx
+src/components/agents/AgentCard.tsx
+src/components/agents/AgentStatusDot.tsx
+src/components/dashboard/AgentLoadBar.tsx
+src/components/dashboard/StatCard.tsx
+src/components/layout/AppLayout.tsx
+src/components/layout/PageHeader.tsx
+src/components/layout/Sidebar.tsx
+src/components/orders/CreateOrderModal.tsx
+src/components/orders/OrderRow.tsx
+src/components/suggestions/SuggestionCard.tsx
+src/components/ui/Badge.tsx
+src/components/ui/Button.tsx
+src/components/ui/Card.tsx
+src/components/ui/EmptyState.tsx
+src/components/ui/Spinner.tsx
+src/components/ui/Toast.tsx
+src/hooks/useAgents.ts
+src/hooks/useOrders.ts
+src/hooks/useSuggestions.ts
+src/index.css
+src/lib/api.ts
+src/lib/utils.ts
+src/main.tsx
+src/pages/AgentsPage.tsx
+src/pages/DashboardPage.tsx
+src/pages/OrdersPage.tsx
+src/pages/SuggestionsPage.tsx
+src/types/index.ts
+src/vite-env.d.ts
+tailwind.config.js
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+ziprun-web/.gitignore
+ziprun-web/eslint.config.js
+ziprun-web/index.html
+ziprun-web/package.json
+ziprun-web/public/favicon.svg
+ziprun-web/public/icons.svg
+ziprun-web/README.md
+ziprun-web/src/App.css
+ziprun-web/src/App.tsx
+ziprun-web/src/assets/hero.png
+ziprun-web/src/assets/react.svg
+ziprun-web/src/assets/vite.svg
+ziprun-web/src/index.css
+ziprun-web/src/main.tsx
+ziprun-web/tsconfig.app.json
+ziprun-web/tsconfig.json
+ziprun-web/tsconfig.node.json
+ziprun-web/vite.config.ts
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="index.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZipRun · Ops Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+</file>
+
+<file path="package.json">
+{
+  "name": "ziprun-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@tanstack/react-query": "^5.51.1",
+    "axios": "^1.7.2",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
+    "lucide-react": "^0.383.0",
+    "react-router-dom": "^6.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.40",
+    "tailwindcss": "^3.4.7",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.4"
+  }
+}
+</file>
+
+<file path="postcss.config.js">
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+</file>
+
+<file path="public/favicon.svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#F59E0B"/>
+  <path d="M18 6l-8 12h7l-3 8 10-13h-7l1-7z" fill="#0D0F12"/>
+</svg>
+</file>
+
+<file path="README.md">
+# ZipRun Ops Console — Frontend
+
+React 18 + Vite + TypeScript + Tailwind CSS
+
+## Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open http://localhost:5173
+
+Requires the Spring Boot backend running on http://localhost:8080.
+
+## Stack
+
+- React 18 + TypeScript
+- Vite (dev server with proxy to :8080)
+- TanStack Query v5 (data fetching, auto-polling every 4-5s)
+- React Router v6
+- Tailwind CSS v3
+- Axios
+- Lucide React icons
+
+## Features
+
+- Live Dashboard — stats, agent load bars, pending suggestions prioritised by urgency
+- Agents page — status filter tabs, capacity bars, mark offline to trigger agentic loop
+- Orders page — full board with status filters, create order modal, deliver action
+- Suggestions page — agentic re-plans highlighted with amber glow, AI reasoning expanded by default, Accept/Reject controls
+- Toast notifications for every action
+- Auto-refresh via TanStack Query polling (no manual refresh needed)
+- Vite proxy — no CORS issues in development
+
+## Demo flow (for walkthrough)
+
+1. Open Dashboard — see live agent load
+2. Go to Agents — click "Go Offline" on AGT-005
+3. Watch Dashboard — amber suggestions appear within 5 seconds (async re-plan)
+4. Click a suggestion — see AI reasoning, confidence score, AGENT_OFFLINE badge
+5. Accept — order moves to REASSIGNED, agent load updates
+</file>
+
+<file path="setup_frontend.bat">
+@echo off
+setlocal enabledelayedexpansion
+
+echo ============================================
+echo  ZipRun Frontend Setup Script
+echo ============================================
+echo.
+
+REM ─── Step 1: Create project via Vite ────────────────────────────────────────
+echo [1/5] Scaffolding Vite + React + TypeScript project...
+call npm create vite@latest ziprun-frontend -- --template react-ts
+if errorlevel 1 (
+    echo ERROR: Vite scaffold failed. Make sure Node.js 18+ is installed.
+    pause
+    exit /b 1
+)
+
+cd ziprun-frontend
+echo Done. Entered ziprun-frontend\
+echo.
+
+REM ─── Step 2: Install dependencies ───────────────────────────────────────────
+echo [2/5] Installing dependencies...
+call npm install react-router-dom @tanstack/react-query axios clsx date-fns lucide-react
+call npm install -D tailwindcss postcss autoprefixer
+call npm install -D @types/react @types/react-dom
+echo Done.
+echo.
+
+REM ─── Step 3: Init Tailwind ───────────────────────────────────────────────────
+echo [3/5] Initialising Tailwind CSS...
+call npx tailwindcss init -p
+echo Done.
+echo.
+
+REM ─── Step 4: Create folder structure ────────────────────────────────────────
+echo [4/5] Creating folder structure...
+
+mkdir src\components\ui
+mkdir src\components\layout
+mkdir src\components\agents
+mkdir src\components\orders
+mkdir src\components\suggestions
+mkdir src\components\dashboard
+mkdir src\hooks
+mkdir src\lib
+mkdir src\types
+mkdir src\pages
+mkdir public
+
+echo Done.
+echo.
+
+REM ─── Step 5: Create all empty files ─────────────────────────────────────────
+echo [5/5] Creating all source files...
+
+REM Config files (root)
+type nul > vite.config.ts
+type nul > tailwind.config.js
+type nul > tsconfig.json
+type nul > tsconfig.node.json
+type nul > postcss.config.js
+
+REM public
+type nul > public\favicon.svg
+type nul > index.html
+
+REM src root
+type nul > src\main.tsx
+type nul > src\App.tsx
+type nul > src\index.css
+type nul > src\vite-env.d.ts
+
+REM types
+type nul > src\types\index.ts
+
+REM lib
+type nul > src\lib\api.ts
+type nul > src\lib\utils.ts
+
+REM hooks
+type nul > src\hooks\useAgents.ts
+type nul > src\hooks\useOrders.ts
+type nul > src\hooks\useSuggestions.ts
+
+REM UI components
+type nul > src\components\ui\Badge.tsx
+type nul > src\components\ui\Button.tsx
+type nul > src\components\ui\Card.tsx
+type nul > src\components\ui\Spinner.tsx
+type nul > src\components\ui\EmptyState.tsx
+type nul > src\components\ui\Toast.tsx
+
+REM Layout components
+type nul > src\components\layout\AppLayout.tsx
+type nul > src\components\layout\Sidebar.tsx
+type nul > src\components\layout\PageHeader.tsx
+
+REM Agent components
+type nul > src\components\agents\AgentCard.tsx
+type nul > src\components\agents\AgentStatusDot.tsx
+
+REM Order components
+type nul > src\components\orders\OrderRow.tsx
+type nul > src\components\orders\CreateOrderModal.tsx
+
+REM Suggestion components
+type nul > src\components\suggestions\SuggestionCard.tsx
+
+REM Dashboard components
+type nul > src\components\dashboard\StatCard.tsx
+type nul > src\components\dashboard\AgentLoadBar.tsx
+
+REM Pages
+type nul > src\pages\DashboardPage.tsx
+type nul > src\pages\AgentsPage.tsx
+type nul > src\pages\OrdersPage.tsx
+type nul > src\pages\SuggestionsPage.tsx
+
+echo Done.
+echo.
+echo ============================================
+echo  All files and folders created successfully
+echo  Next: paste the code into each file, then
+echo  run:  npm run dev
+echo ============================================
+pause
+</file>
+
+<file path="src/App.tsx">
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { AppLayout } from '@/components/layout/AppLayout'
+import { DashboardPage }   from '@/pages/DashboardPage'
+import { AgentsPage }      from '@/pages/AgentsPage'
+import { OrdersPage }      from '@/pages/OrdersPage'
+import { SuggestionsPage } from '@/pages/SuggestionsPage'
+
+export default function App() {
+  return (
+    <Routes>
+      <Route element={<AppLayout />}>
+        <Route index element={<DashboardPage />} />
+        <Route path="agents"      element={<AgentsPage />} />
+        <Route path="orders"      element={<OrdersPage />} />
+        <Route path="suggestions" element={<SuggestionsPage />} />
+        <Route path="*"           element={<Navigate to="/" replace />} />
+      </Route>
+    </Routes>
+  )
+}
+</file>
+
+<file path="src/components/agents/AgentCard.tsx">
+import { MapPin, Package, Zap } from 'lucide-react'
+import { Card, CardBody } from '@/components/ui/Card'
+import { Badge } from '@/components/ui/Badge'
+import { Button } from '@/components/ui/Button'
+import { AgentStatusDot } from './AgentStatusDot'
+import { agentStatusMeta, cn } from '@/lib/utils'
+import type { Agent, AgentStatus } from '@/types'
+import { useUpdateAgentStatus } from '@/hooks/useAgents'
+import { useToast } from '@/components/ui/Toast'
+
+interface AgentCardProps {
+  agent: Agent
+}
+
+const statusCycle: Partial<Record<AgentStatus, AgentStatus>> = {
+  AVAILABLE: 'BUSY',
+  BUSY: 'AVAILABLE',
+}
+
+const loadPercent = (agent: Agent) => {
+  if (!agent.maxCapacity) return null
+  return Math.round((agent.activeOrderCount / agent.maxCapacity) * 100)
+}
+
+export function AgentCard({ agent }: AgentCardProps) {
+  const meta    = agentStatusMeta(agent.status)
+  const { mutate, isPending } = useUpdateAgentStatus()
+  const { toast } = useToast()
+
+  const nextStatus = statusCycle[agent.status]
+
+  const handleMarkOffline = () => {
+    mutate(
+      { id: agent.id, status: 'OFFLINE' },
+      {
+        onSuccess: () => toast('success', `${agent.name} marked offline. Re-planning triggered.`),
+        onError: (e) => toast('error', e.message),
+      }
+    )
+  }
+
+  const handleToggle = () => {
+    if (!nextStatus) return
+    mutate(
+      { id: agent.id, status: nextStatus },
+      {
+        onSuccess: () => toast('success', `${agent.name} is now ${nextStatus.toLowerCase()}.`),
+        onError: (e) => toast('error', e.message),
+      }
+    )
+  }
+
+  const pct = loadPercent(agent)
+
+  return (
+    <Card hoverable glow={agent.status === 'OFFLINE' ? 'none' : undefined} className="animate-fade-in">
+      <CardBody className="space-y-3">
+        {/* Header row */}
+        <div className="flex items-start justify-between">
+          <div className="flex items-center gap-2.5">
+            <AgentStatusDot status={agent.status} />
+            <div>
+              <p className="text-sm font-semibold text-slate-100 leading-tight">{agent.name}</p>
+              <p className="text-[11px] font-mono text-slate-600">{agent.id}</p>
+            </div>
+          </div>
+          <Badge
+            variant={
+              agent.status === 'AVAILABLE' ? 'emerald'
+              : agent.status === 'BUSY' ? 'amber'
+              : 'slate'
+            }
+          >
+            {meta.label}
+          </Badge>
+        </div>
+
+        {/* Stats row */}
+        <div className="grid grid-cols-2 gap-2">
+          <div className="bg-surface-700 rounded px-3 py-2">
+            <p className="text-[10px] text-slate-600 font-mono uppercase tracking-wider mb-1">Active Orders</p>
+            <div className="flex items-baseline gap-1">
+              <span className="text-lg font-semibold text-slate-100 font-mono">{agent.activeOrderCount}</span>
+              {agent.maxCapacity && (
+                <span className="text-xs text-slate-600">/ {agent.maxCapacity}</span>
+              )}
+            </div>
+          </div>
+          <div className="bg-surface-700 rounded px-3 py-2">
+            <p className="text-[10px] text-slate-600 font-mono uppercase tracking-wider mb-1">Zone</p>
+            <div className="flex items-center gap-1.5">
+              <MapPin size={11} className="text-slate-600 shrink-0" />
+              <span className="text-xs text-slate-300 truncate">
+                {agent.currentZone ?? 'Unassigned'}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Capacity bar */}
+        {pct !== null && (
+          <div>
+            <div className="flex justify-between text-[10px] font-mono text-slate-600 mb-1">
+              <span>CAPACITY</span>
+              <span>{pct}%</span>
+            </div>
+            <div className="h-1 bg-surface-700 rounded-full overflow-hidden">
+              <div
+                className={cn(
+                  'h-full rounded-full transition-all duration-300',
+                  pct >= 90 ? 'bg-rose-500' : pct >= 60 ? 'bg-amber-500' : 'bg-emerald-500'
+                )}
+                style={{ width: `${pct}%` }}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Actions */}
+        {agent.status !== 'OFFLINE' && (
+          <div className="flex gap-2 pt-1">
+            {nextStatus && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleToggle}
+                loading={isPending}
+                className="flex-1"
+              >
+                <Package size={11} />
+                Set {nextStatus.charAt(0) + nextStatus.slice(1).toLowerCase()}
+              </Button>
+            )}
+            <Button
+              variant="danger"
+              size="sm"
+              onClick={handleMarkOffline}
+              loading={isPending}
+              className="flex-1"
+            >
+              <Zap size={11} />
+              Go Offline
+            </Button>
+          </div>
+        )}
+      </CardBody>
+    </Card>
+  )
+}
+</file>
+
+<file path="src/components/agents/AgentStatusDot.tsx">
+import { cn, agentStatusMeta } from '@/lib/utils'
+import type { AgentStatus } from '@/types'
+
+export function AgentStatusDot({ status }: { status: AgentStatus }) {
+  const meta = agentStatusMeta(status)
+  return (
+    <span className="relative flex items-center justify-center w-2.5 h-2.5">
+      {status === 'AVAILABLE' && (
+        <span className={cn('absolute inline-flex w-full h-full rounded-full opacity-60 animate-ping-slow', meta.dot)} />
+      )}
+      <span className={cn('relative inline-flex rounded-full w-2 h-2', meta.dot)} />
+    </span>
+  )
+}
+</file>
+
+<file path="src/components/dashboard/AgentLoadBar.tsx">
+import { cn } from '@/lib/utils'
+import type { Agent } from '@/types'
+import { agentStatusMeta } from '@/lib/utils'
+
+interface AgentLoadBarProps {
+  agent: Agent
+}
+
+export function AgentLoadBar({ agent }: AgentLoadBarProps) {
+  const meta = agentStatusMeta(agent.status)
+  const max = agent.maxCapacity ?? 5
+  const pct = Math.min((agent.activeOrderCount / max) * 100, 100)
+
+  return (
+    <div className="flex items-center gap-3 py-2">
+      {/* Status dot */}
+      <span className={cn('w-1.5 h-1.5 rounded-full shrink-0', meta.dot)} />
+
+      {/* Name */}
+      <span className="text-xs text-slate-400 w-28 truncate shrink-0">{agent.name}</span>
+
+      {/* Bar */}
+      <div className="flex-1 h-1.5 bg-surface-600 rounded-full overflow-hidden">
+        <div
+          className={cn(
+            'h-full rounded-full transition-all duration-500',
+            agent.status === 'OFFLINE' ? 'bg-slate-600'
+            : pct >= 90 ? 'bg-rose-500'
+            : pct >= 60 ? 'bg-amber-500'
+            : 'bg-emerald-500'
+          )}
+          style={{ width: `${agent.status === 'OFFLINE' ? 0 : pct}%` }}
+        />
+      </div>
+
+      {/* Count */}
+      <span className="text-[11px] font-mono text-slate-600 w-8 text-right shrink-0">
+        {agent.activeOrderCount}/{max}
+      </span>
+    </div>
+  )
+}
+</file>
+
+<file path="src/components/dashboard/StatCard.tsx">
+import { cn } from '@/lib/utils'
+
+interface StatCardProps {
+  label: string
+  value: number | string
+  sub?: string
+  accent?: 'amber' | 'blue' | 'emerald' | 'rose' | 'none'
+  pulse?: boolean
+}
+
+const accentStyles: Record<string, string> = {
+  amber:   'text-amber-400',
+  blue:    'text-blue-400',
+  emerald: 'text-emerald-400',
+  rose:    'text-rose-400',
+  none:    'text-slate-100',
+}
+
+export function StatCard({ label, value, sub, accent = 'none', pulse = false }: StatCardProps) {
+  return (
+    <div className="bg-surface-800 border border-border-subtle rounded-lg px-5 py-4 shadow-card">
+      <p className="text-[10px] font-mono text-slate-600 uppercase tracking-widest mb-2">{label}</p>
+      <p className={cn('text-3xl font-bold font-mono', accentStyles[accent], pulse && 'animate-pulse-amber')}>
+        {value}
+      </p>
+      {sub && <p className="text-[11px] text-slate-600 mt-1">{sub}</p>}
+    </div>
+  )
+}
+</file>
+
+<file path="src/components/layout/AppLayout.tsx">
+import { Outlet } from 'react-router-dom'
+import { Sidebar } from './Sidebar'
+
+export function AppLayout() {
+  return (
+    <div className="flex h-screen bg-surface-900 text-slate-200 overflow-hidden">
+      <Sidebar />
+      <main className="flex-1 overflow-y-auto">
+        <Outlet />
+      </main>
+    </div>
+  )
+}
+</file>
+
+<file path="src/components/layout/PageHeader.tsx">
+interface PageHeaderProps {
+  title: string
+  subtitle?: string
+  action?: React.ReactNode
+}
+
+export function PageHeader({ title, subtitle, action }: PageHeaderProps) {
+  return (
+    <div className="flex items-start justify-between px-7 pt-7 pb-5">
+      <div>
+        <h1 className="text-lg font-semibold text-slate-100">{title}</h1>
+        {subtitle && <p className="text-sm text-slate-500 mt-0.5">{subtitle}</p>}
+      </div>
+      {action && <div>{action}</div>}
+    </div>
+  )
+}
+</file>
+
+<file path="src/components/layout/Sidebar.tsx">
+import { NavLink } from 'react-router-dom'
+import { LayoutDashboard, Users, Package, BrainCircuit, Zap } from 'lucide-react'
+import { cn } from '../../lib/utils'
+import { useSuggestions } from '../../hooks/useSuggestions'
+
+const navItems = [
+  { to: '/',            icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/agents',      icon: Users,           label: 'Agents' },
+  { to: '/orders',      icon: Package,         label: 'Orders' },
+  { to: '/suggestions', icon: BrainCircuit,    label: 'Suggestions' },
+]
+
+export function Sidebar() {
+  const { data: pending } = useSuggestions('PENDING')
+  const pendingCount = pending?.length ?? 0
+
+  return (
+    <aside className="w-56 bg-surface-900 border-r border-border-subtle flex flex-col shrink-0">
+      {/* Logo */}
+      <div className="px-5 py-5 border-b border-border-subtle">
+        <div className="flex items-center gap-2.5">
+          <div className="w-7 h-7 rounded-md bg-amber-500 flex items-center justify-center">
+            <Zap size={14} className="text-surface-900 fill-surface-900" />
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-slate-100 leading-none">ZipRun</p>
+            <p className="text-[10px] text-slate-600 font-mono tracking-widest uppercase mt-0.5">Ops Console</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Nav */}
+      <nav className="flex-1 px-2 py-3 space-y-0.5">
+        {navItems.map(({ to, icon: Icon, label }) => (
+          <NavLink
+            key={to}
+            to={to}
+            end={to === '/'}
+            className={({ isActive }) =>
+              cn(
+                'flex items-center gap-3 px-3 py-2.5 rounded-md text-sm transition-all duration-150',
+                isActive
+                  ? 'bg-surface-600 text-slate-100 font-medium'
+                  : 'text-slate-500 hover:text-slate-300 hover:bg-surface-700'
+              )
+            }
+          >
+            {({ isActive }) => (
+              <>
+                <Icon
+                  size={15}
+                  className={cn(isActive ? 'text-amber-400' : 'text-slate-600')}
+                />
+                <span className="flex-1">{label}</span>
+                {label === 'Suggestions' && pendingCount > 0 && (
+                  <span className="bg-amber-500 text-surface-900 text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center font-mono">
+                    {pendingCount > 9 ? '9+' : pendingCount}
+                  </span>
+                )}
+              </>
+            )}
+          </NavLink>
+        ))}
+      </nav>
+
+      {/* Footer */}
+      <div className="px-5 py-3 border-t border-border-subtle">
+        <p className="text-[10px] text-slate-700 font-mono">AI Reassignment Engine</p>
+        <p className="text-[10px] text-slate-700 font-mono">Sprint 1 · Zycus Hackathon</p>
+      </div>
+    </aside>
+  )
+}
+</file>
+
+<file path="src/components/orders/CreateOrderModal.tsx">
+import { useState } from 'react'
+import { X } from 'lucide-react'
+import { Button } from '@/components/ui/Button'
+import { useAgents } from '@/hooks/useAgents'
+import { useCreateOrder } from '@/hooks/useOrders'
+import { useToast } from '@/components/ui/Toast'
+import { agentStatusMeta } from '@/lib/utils'
+
+interface CreateOrderModalProps {
+  onClose: () => void
+}
+
+export function CreateOrderModal({ onClose }: CreateOrderModalProps) {
+  const [description, setDescription] = useState('')
+  const [agentId, setAgentId] = useState('')
+  const { data: agents } = useAgents()
+  const { mutate, isPending } = useCreateOrder()
+  const { toast } = useToast()
+
+  const availableAgents = agents?.filter((a) => a.status !== 'OFFLINE') ?? []
+
+  const handleSubmit = () => {
+    if (!description.trim() || !agentId) return
+    mutate(
+      { description: description.trim(), assignedAgentId: agentId },
+      {
+        onSuccess: (order) => {
+          toast('success', `Order ${order.id} created and assigned.`)
+          onClose()
+        },
+        onError: (e) => toast('error', e.message),
+      }
+    )
+  }
+
+  return (
+    <div className="fixed inset-0 z-40 flex items-center justify-center">
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+
+      {/* Modal */}
+      <div className="relative bg-surface-800 border border-border-default rounded-xl w-full max-w-md mx-4 shadow-card-hover animate-slide-in">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-border-subtle">
+          <h2 className="text-sm font-semibold text-slate-100">New Order</h2>
+          <button onClick={onClose} className="text-slate-600 hover:text-slate-300 transition-colors">
+            <X size={15} />
+          </button>
+        </div>
+
+        <div className="px-5 py-5 space-y-4">
+          <div>
+            <label className="block text-[11px] font-mono text-slate-500 uppercase tracking-wider mb-1.5">
+              Description
+            </label>
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="e.g. Electronics — Koramangala to Indiranagar"
+              className="w-full bg-surface-700 border border-border-default rounded px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-blue-500/60 focus:bg-surface-600 transition-colors"
+            />
+          </div>
+
+          <div>
+            <label className="block text-[11px] font-mono text-slate-500 uppercase tracking-wider mb-1.5">
+              Assign to Agent
+            </label>
+            <select
+              value={agentId}
+              onChange={(e) => setAgentId(e.target.value)}
+              className="w-full bg-surface-700 border border-border-default rounded px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-blue-500/60 transition-colors"
+            >
+              <option value="">Select an agent</option>
+              {availableAgents.map((agent) => (
+                <option key={agent.id} value={agent.id}>
+                  {agent.name} — {agentStatusMeta(agent.status).label} ({agent.activeOrderCount} active)
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className="flex gap-2.5 px-5 py-4 border-t border-border-subtle">
+          <Button variant="ghost" size="md" onClick={onClose} className="flex-1">
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            size="md"
+            onClick={handleSubmit}
+            loading={isPending}
+            disabled={!description.trim() || !agentId}
+            className="flex-1"
+          >
+            Create Order
+          </Button>
+        </div>
+      </div>
+    </div>
+  )
+}
+</file>
+
+<file path="src/components/orders/OrderRow.tsx">
+import { Package2, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react'
+import { Badge } from '@/components/ui/Badge'
+import { Button } from '@/components/ui/Button'
+import { orderStatusMeta, priorityMeta, formatRelativeTime, cn } from '@/lib/utils'
+import type { Order } from '@/types'
+import { useMarkDelivered, useGenerateSuggestion } from '@/hooks/useOrders'
+import { useToast } from '@/components/ui/Toast'
+
+interface OrderRowProps {
+  order: Order
+}
+
+export function OrderRow({ order }: OrderRowProps) {
+  const statusMeta = orderStatusMeta(order.status)
+  const pMeta = priorityMeta(order.priority)
+  const { mutate: deliver, isPending: delivering } = useMarkDelivered()
+  const { mutate: suggest, isPending: suggesting } = useGenerateSuggestion()
+  const { toast } = useToast()
+
+  return (
+    <div
+      className={cn(
+        'flex items-center gap-4 px-5 py-3.5 border-b border-border-subtle last:border-0',
+        'hover:bg-surface-700/40 transition-colors duration-100 group',
+        order.status === 'REASSIGNMENT_PENDING' && 'bg-amber-500/3'
+      )}
+    >
+      {/* Icon */}
+      <div className={cn(
+        'w-7 h-7 rounded flex items-center justify-center shrink-0',
+        order.status === 'REASSIGNMENT_PENDING' ? 'bg-amber-500/10' : 'bg-surface-600'
+      )}>
+        <Package2 size={13} className={order.status === 'REASSIGNMENT_PENDING' ? 'text-amber-400' : 'text-slate-500'} />
+      </div>
+
+      {/* Description + agent */}
+      <div className="flex-1 min-w-0">
+        <p className="text-sm text-slate-200 truncate leading-snug">{order.description}</p>
+        <div className="flex items-center gap-1.5 mt-0.5">
+          <span className="text-[11px] font-mono text-slate-600">{order.id}</span>
+          <span className="text-slate-700">·</span>
+          <span className="text-[11px] text-slate-600">{order.assignedAgentName}</span>
+          {order.pickupZone && order.dropoffZone && (
+            <>
+              <span className="text-slate-700">·</span>
+              <span className="text-[11px] text-slate-600 flex items-center gap-1">
+                {order.pickupZone} <ArrowRight size={9} className="text-slate-700" /> {order.dropoffZone}
+              </span>
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* Priority */}
+      <span className={cn('text-[11px] font-mono font-medium shrink-0', pMeta.color)}>
+        {pMeta.label.toUpperCase()}
+      </span>
+
+      {/* Status */}
+      <Badge
+        variant={
+          order.status === 'ASSIGNED' ? 'blue'
+          : order.status === 'REASSIGNMENT_PENDING' ? 'amber'
+          : order.status === 'REASSIGNED' ? 'emerald'
+          : 'slate'
+        }
+      >
+        {statusMeta.label}
+      </Badge>
+
+      {/* Time */}
+      <span className="text-[11px] text-slate-600 font-mono shrink-0 hidden xl:block">
+        {formatRelativeTime(order.createdAt)}
+      </span>
+
+      {/* Actions */}
+      <div className="flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
+        {order.status === 'ASSIGNED' && (
+          <>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() =>
+                suggest(
+                  { orderId: order.id, triggerReason: 'INITIAL' },
+                  {
+                    onSuccess: () => toast('success', `Suggestion generated for ${order.id}.`),
+                    onError: (e) => toast('error', e.message),
+                  }
+                )
+              }
+              loading={suggesting}
+            >
+              <Sparkles size={11} />
+              Suggest
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() =>
+                deliver(order.id, {
+                  onSuccess: () => toast('success', `${order.id} marked delivered.`),
+                  onError: (e) => toast('error', e.message),
+                })
+              }
+              loading={delivering}
+            >
+              <CheckCircle2 size={11} />
+              Deliver
+            </Button>
+          </>
+        )}
+      </div>
+    </div>
+  )
+}
+</file>
+
+<file path="src/components/suggestions/SuggestionCard.tsx">
+import { Brain, ShieldAlert, CheckCircle2, XCircle, ChevronDown, ChevronUp, Cpu } from 'lucide-react'
+import { useState } from 'react'
+import { Card, CardBody } from '@/components/ui/Card'
+import { Badge } from '@/components/ui/Badge'
+import { Button } from '@/components/ui/Button'
+import { confidenceColor, formatRelativeTime, cn } from '@/lib/utils'
+import type { Suggestion } from '@/types'
+import { useReviewSuggestion } from '@/hooks/useSuggestions'
+import { useToast } from '@/components/ui/Toast'
+
+interface SuggestionCardProps {
+  suggestion: Suggestion
+}
+
+export function SuggestionCard({ suggestion: s }: SuggestionCardProps) {
+  const [expanded, setExpanded] = useState(s.status === 'PENDING')
+  const { mutate, isPending } = useReviewSuggestion()
+  const { toast } = useToast()
+
+  const isAgenticReplan = s.triggerReason === 'AGENT_OFFLINE'
+  const isFallback = s.fallbackUsed
+  const isPendingStatus = s.status === 'PENDING'
+
+  const handleReview = (decision: 'ACCEPT' | 'REJECT') => {
+    mutate(
+      { id: s.id, decision },
+      {
+        onSuccess: () =>
+          toast(
+            'success',
+            decision === 'ACCEPT'
+              ? `Order ${s.orderId} reassigned to ${s.recommendedAgentName}.`
+              : `Suggestion for ${s.orderId} rejected.`
+          ),
+        onError: (e) => toast('error', e.message),
+      }
+    )
+  }
+
+  return (
+    <Card
+      glow={isAgenticReplan && isPendingStatus ? 'amber' : 'none'}
+      className={cn('animate-slide-in', isAgenticReplan && isPendingStatus && 'border-amber-500/25')}
+    >
+      <CardBody className="space-y-3">
+        {/* Top row */}
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex items-center gap-2.5 min-w-0">
+            {/* Agentic vs manual badge */}
+            {isAgenticReplan ? (
+              <div className="flex items-center justify-center w-7 h-7 rounded-md bg-amber-500/15 border border-amber-500/25 shrink-0">
+                <ShieldAlert size={14} className="text-amber-400" />
+              </div>
+            ) : (
+              <div className="flex items-center justify-center w-7 h-7 rounded-md bg-blue-500/10 border border-blue-500/20 shrink-0">
+                <Brain size={14} className="text-blue-400" />
+              </div>
+            )}
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-xs font-mono text-slate-500">{s.orderId}</span>
+                {isAgenticReplan && (
+                  <Badge variant="amber">
+                    <ShieldAlert size={9} />
+                    Auto Re-plan
+                  </Badge>
+                )}
+                {isFallback && (
+                  <Badge variant="slate">
+                    <Cpu size={9} />
+                    Rule fallback
+                  </Badge>
+                )}
+              </div>
+              <p className="text-sm text-slate-200 mt-0.5 truncate">{s.orderDescription}</p>
+            </div>
+          </div>
+
+          {/* Status badge + expand toggle */}
+          <div className="flex items-center gap-2 shrink-0">
+            {s.status === 'ACCEPTED' && <Badge variant="emerald"><CheckCircle2 size={9} />Accepted</Badge>}
+            {s.status === 'REJECTED' && <Badge variant="rose"><XCircle size={9} />Rejected</Badge>}
+            {s.status === 'PENDING'  && <Badge variant="amber">Pending</Badge>}
+            <button
+              onClick={() => setExpanded((p) => !p)}
+              className="text-slate-600 hover:text-slate-400 transition-colors"
+            >
+              {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Recommendation row */}
+        <div className="flex items-center gap-4 bg-surface-700 rounded px-3 py-2.5">
+          <div className="flex-1">
+            <p className="text-[10px] font-mono text-slate-600 uppercase tracking-wider">Recommended Agent</p>
+            <p className="text-sm font-semibold text-slate-100 mt-0.5">{s.recommendedAgentName}</p>
+            <p className="text-[11px] font-mono text-slate-600">{s.recommendedAgentId}</p>
+          </div>
+          <div className="text-right">
+            <p className="text-[10px] font-mono text-slate-600 uppercase tracking-wider">Confidence</p>
+            <p className={cn('text-2xl font-bold font-mono mt-0.5', confidenceColor(s.confidence))}>
+              {Math.round(s.confidence * 100)}
+              <span className="text-sm font-normal">%</span>
+            </p>
+          </div>
+          <div className="text-right">
+            <p className="text-[10px] font-mono text-slate-600 uppercase tracking-wider">Strategy</p>
+            <Badge variant={s.strategy === 'AI' ? 'blue' : 'slate'} className="mt-1">
+              {s.strategy === 'AI' ? <Brain size={9} /> : <Cpu size={9} />}
+              {s.strategy}
+            </Badge>
+          </div>
+        </div>
+
+        {/* AI Reasoning — expandable */}
+        {expanded && (
+          <div className="space-y-3 animate-fade-in">
+            <div className="bg-surface-700/50 border border-border-subtle rounded px-3 py-2.5">
+              <p className="text-[10px] font-mono text-slate-600 uppercase tracking-wider mb-1.5">
+                {s.strategy === 'AI' ? 'AI Reasoning' : 'Rule Engine Output'}
+              </p>
+              <p className="text-xs text-slate-400 leading-relaxed">{s.reasoning}</p>
+            </div>
+
+            <div className="flex items-center justify-between text-[11px] text-slate-600">
+              <span className="font-mono">
+                Triggered: <span className="text-slate-500">{s.triggerReason === 'AGENT_OFFLINE' ? 'Agent went offline' : 'Manual request'}</span>
+              </span>
+              <span className="font-mono">{formatRelativeTime(s.createdAt)}</span>
+            </div>
+
+            {/* Accept / Reject */}
+            {isPendingStatus && (
+              <div className="flex gap-2 pt-1">
+                <Button
+                  variant="success"
+                  size="sm"
+                  onClick={() => handleReview('ACCEPT')}
+                  loading={isPending}
+                  className="flex-1"
+                >
+                  <CheckCircle2 size={12} />
+                  Accept & Reassign
+                </Button>
+                <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={() => handleReview('REJECT')}
+                  loading={isPending}
+                  className="flex-1"
+                >
+                  <XCircle size={12} />
+                  Reject
+                </Button>
+              </div>
+            )}
+
+            {s.reviewedAt && (
+              <p className="text-[11px] text-slate-600 font-mono text-right">
+                Reviewed {formatRelativeTime(s.reviewedAt)}
+              </p>
+            )}
+          </div>
+        )}
+      </CardBody>
+    </Card>
+  )
+}
+</file>
+
+<file path="src/components/ui/Badge.tsx">
+import { cn } from '@/lib/utils'
+
+interface BadgeProps {
+  children: React.ReactNode
+  className?: string
+  variant?: 'default' | 'amber' | 'blue' | 'emerald' | 'rose' | 'slate'
+}
+
+const variantStyles: Record<string, string> = {
+  default:  'bg-surface-600 text-slate-300 border-border-default',
+  amber:    'bg-amber-500/10 text-amber-400 border-amber-500/20',
+  blue:     'bg-blue-500/10 text-blue-400 border-blue-500/20',
+  emerald:  'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+  rose:     'bg-rose-500/10 text-rose-400 border-rose-500/20',
+  slate:    'bg-slate-500/10 text-slate-500 border-slate-500/20',
+}
+
+export function Badge({ children, className, variant = 'default' }: BadgeProps) {
+  return (
+    <span
+      className={cn(
+        'inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium border font-mono tracking-wide',
+        variantStyles[variant],
+        className
+      )}
+    >
+      {children}
+    </span>
+  )
+}
+</file>
+
+<file path="src/components/ui/Button.tsx">
+import { cn } from '../../lib/utils'
+import { Loader2 } from 'lucide-react'
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'ghost' | 'danger' | 'success' | 'outline'
+  size?: 'sm' | 'md'
+  loading?: boolean
+  children: React.ReactNode
+}
+
+const variantStyles: Record<string, string> = {
+  primary: 'bg-blue-600 hover:bg-blue-500 text-white border-transparent',
+  ghost:   'bg-transparent hover:bg-surface-600 text-slate-400 hover:text-slate-200 border-transparent',
+  danger:  'bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border-rose-500/20 hover:border-rose-500/40',
+  success: 'bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border-emerald-500/20 hover:border-emerald-500/40',
+  outline: 'bg-transparent hover:bg-surface-600 text-slate-300 border-border-default hover:border-border-strong',
+}
+
+const sizeStyles: Record<string, string> = {
+  sm: 'px-3 py-1.5 text-xs',
+  md: 'px-4 py-2 text-sm',
+}
+
+export function Button({
+  variant = 'outline',
+  size = 'md',
+  loading = false,
+  children,
+  className,
+  disabled,
+  ...props
+}: ButtonProps) {
+  return (
+    <button
+      disabled={disabled || loading}
+      className={cn(
+        'inline-flex items-center gap-2 rounded font-medium border transition-all duration-150',
+        'focus:outline-none focus:ring-2 focus:ring-blue-500/40',
+        'disabled:opacity-50 disabled:cursor-not-allowed',
+        variantStyles[variant],
+        sizeStyles[size],
+        className
+      )}
+      {...props}
+    >
+      {loading && <Loader2 size={12} className="animate-spin shrink-0" />}
+      {children}
+    </button>
+  )
+}
+</file>
+
+<file path="src/components/ui/Card.tsx">
+import { cn } from '../../lib/utils'
+
+interface CardProps {
+  children: React.ReactNode
+  className?: string
+  hoverable?: boolean
+  glow?: 'amber' | 'blue' | 'none'
+}
+
+export function Card({ children, className, hoverable = false, glow = 'none' }: CardProps) {
+  return (
+    <div
+      className={cn(
+        'bg-surface-800 border border-border-subtle rounded-lg shadow-card',
+        hoverable && 'transition-all duration-200 hover:border-border-default hover:shadow-card-hover',
+        glow === 'amber' && 'border-amber-500/30 shadow-glow-amber',
+        glow === 'blue'  && 'border-blue-500/20 shadow-glow-blue',
+        className
+      )}
+    >
+      {children}
+    </div>
+  )
+}
+
+export function CardHeader({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <div className={cn('px-5 py-4 border-b border-border-subtle', className)}>
+      {children}
+    </div>
+  )
+}
+
+export function CardBody({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <div className={cn('px-5 py-4', className)}>{children}</div>
+}
+</file>
+
+<file path="src/components/ui/EmptyState.tsx">
+import { cn } from '@/lib/utils'
+
+interface EmptyStateProps {
+  icon?: React.ReactNode
+  title: string
+  description?: string
+  action?: React.ReactNode
+  className?: string
+}
+
+export function EmptyState({ icon, title, description, action, className }: EmptyStateProps) {
+  return (
+    <div className={cn('flex flex-col items-center justify-center py-14 px-6 text-center', className)}>
+      {icon && <div className="mb-4 text-slate-600">{icon}</div>}
+      <p className="text-sm font-medium text-slate-400">{title}</p>
+      {description && <p className="mt-1 text-xs text-slate-600 max-w-xs">{description}</p>}
+      {action && <div className="mt-4">{action}</div>}
+    </div>
+  )
+}
+</file>
+
+<file path="src/components/ui/Spinner.tsx">
+import { Loader2 } from 'lucide-react'
+import { cn } from '@/lib/utils'
+
+export function Spinner({ className }: { className?: string }) {
+  return <Loader2 className={cn('animate-spin text-slate-500', className)} />
+}
+
+export function PageSpinner() {
+  return (
+    <div className="flex items-center justify-center h-48">
+      <Spinner className="w-6 h-6" />
+    </div>
+  )
+}
+</file>
+
+<file path="src/components/ui/Toast.tsx">
+import { createContext, useContext, useState, useCallback } from 'react'
+import { CheckCircle2, XCircle, X } from 'lucide-react'
+import { cn } from '@/lib/utils'
+
+interface Toast {
+  id: string
+  type: 'success' | 'error'
+  message: string
+}
+
+interface ToastContextValue {
+  toast: (type: 'success' | 'error', message: string) => void
+}
+
+const ToastContext = createContext<ToastContextValue>({ toast: () => {} })
+
+export function useToast() {
+  return useContext(ToastContext)
+}
+
+export function ToastProvider({ children }: { children: React.ReactNode }) {
+  const [toasts, setToasts] = useState<Toast[]>([])
+
+  const toast = useCallback((type: 'success' | 'error', message: string) => {
+    const id = crypto.randomUUID()
+    setToasts((prev) => [...prev, { id, type, message }])
+    setTimeout(() => {
+      setToasts((prev) => prev.filter((t) => t.id !== id))
+    }, 4000)
+  }, [])
+
+  const dismiss = (id: string) => setToasts((prev) => prev.filter((t) => t.id !== id))
+
+  return (
+    <ToastContext.Provider value={{ toast }}>
+      {children}
+      <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none">
+        {toasts.map((t) => (
+          <div
+            key={t.id}
+            className={cn(
+              'flex items-center gap-3 px-4 py-3 rounded-lg border shadow-card pointer-events-auto',
+              'animate-slide-in max-w-sm text-sm',
+              t.type === 'success'
+                ? 'bg-surface-700 border-emerald-500/30 text-slate-200'
+                : 'bg-surface-700 border-rose-500/30 text-slate-200'
+            )}
+          >
+            {t.type === 'success' ? (
+              <CheckCircle2 size={15} className="text-emerald-400 shrink-0" />
+            ) : (
+              <XCircle size={15} className="text-rose-400 shrink-0" />
+            )}
+            <span className="flex-1">{t.message}</span>
+            <button
+              onClick={() => dismiss(t.id)}
+              className="text-slate-500 hover:text-slate-300 transition-colors"
+            >
+              <X size={13} />
+            </button>
+          </div>
+        ))}
+      </div>
+    </ToastContext.Provider>
+  )
+}
+</file>
+
+<file path="src/hooks/useAgents.ts">
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { agentsApi } from '@/lib/api'
+import type { AgentStatus } from '@/types'
+
+export const AGENTS_KEY = ['agents'] as const
+
+export function useAgents(status?: AgentStatus) {
+  return useQuery({
+    queryKey: [...AGENTS_KEY, status],
+    queryFn: () => agentsApi.getAll(status),
+    refetchInterval: 5_000,
+    staleTime: 2_000,
+  })
+}
+
+export function useUpdateAgentStatus() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: ({ id, status }: { id: string; status: AgentStatus }) =>
+      agentsApi.updateStatus(id, { status }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: AGENTS_KEY })
+    },
+  })
+}
+</file>
+
+<file path="src/hooks/useOrders.ts">
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { ordersApi } from '@/lib/api'
+import type { OrderStatus, CreateOrderRequest } from '@/types'
+
+export const ORDERS_KEY = ['orders'] as const
+
+export function useOrders(status?: OrderStatus) {
+  return useQuery({
+    queryKey: [...ORDERS_KEY, status],
+    queryFn: () => ordersApi.getAll(status),
+    refetchInterval: 5_000,
+    staleTime: 2_000,
+  })
+}
+
+export function useCreateOrder() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (body: CreateOrderRequest) => ordersApi.create(body),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ORDERS_KEY })
+    },
+  })
+}
+
+export function useMarkDelivered() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (orderId: string) => ordersApi.markDelivered(orderId),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ORDERS_KEY })
+    },
+  })
+}
+
+export function useGenerateSuggestion() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: ({
+      orderId,
+      triggerReason,
+      offlineAgentId,
+    }: {
+      orderId: string
+      triggerReason: 'INITIAL' | 'AGENT_OFFLINE'
+      offlineAgentId?: string
+    }) => ordersApi.generateSuggestion(orderId, triggerReason, offlineAgentId),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['suggestions'] })
+      qc.invalidateQueries({ queryKey: ORDERS_KEY })
+    },
+  })
+}
+</file>
+
+<file path="src/hooks/useSuggestions.ts">
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { suggestionsApi } from '@/lib/api'
+import type { SuggestionStatus, SuggestionDecision } from '@/types'
+
+export const SUGGESTIONS_KEY = ['suggestions'] as const
+
+export function useSuggestions(status?: SuggestionStatus) {
+  return useQuery({
+    queryKey: [...SUGGESTIONS_KEY, status],
+    queryFn: () => suggestionsApi.getAll(status),
+    refetchInterval: 4_000,
+    staleTime: 1_000,
+  })
+}
+
+export function useReviewSuggestion() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: ({ id, decision }: { id: string; decision: SuggestionDecision }) =>
+      suggestionsApi.review(id, { decision }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: SUGGESTIONS_KEY })
+      qc.invalidateQueries({ queryKey: ['orders'] })
+      qc.invalidateQueries({ queryKey: ['agents'] })
+    },
+  })
+}
+</file>
+
+<file path="src/index.css">
+
+</file>
+
+<file path="src/lib/api.ts">
+import axios from 'axios'
+import type {
+  Agent,
+  Order,
+  Suggestion,
+  ApiResponse,
+  UpdateAgentStatusRequest,
+  UpdateSuggestionRequest,
+  CreateOrderRequest,
+  AgentStatus,
+  OrderStatus,
+  SuggestionStatus,
+} from '@/types'
+
+const client = axios.create({
+  baseURL: '/api',
+  headers: { 'Content-Type': 'application/json' },
+  timeout: 15_000,
+})
+
+client.interceptors.response.use(
+  (res) => res,
+  (err) => {
+    const message =
+      err.response?.data?.message ?? err.message ?? 'An unexpected error occurred'
+    return Promise.reject(new Error(message))
+  }
+)
+
+// ─── Agents ───────────────────────────────────────────────────────────────────
+
+export const agentsApi = {
+  getAll: (status?: AgentStatus) =>
+    client
+      .get<ApiResponse<Agent[]>>('/agents', { params: status ? { status } : {} })
+      .then((r) => r.data.data),
+
+  getById: (id: string) =>
+    client.get<ApiResponse<Agent>>(`/agents/${id}`).then((r) => r.data.data),
+
+  updateStatus: (id: string, body: UpdateAgentStatusRequest) =>
+    client
+      .patch<ApiResponse<Agent>>(`/agents/${id}/status`, body)
+      .then((r) => r.data.data),
+}
+
+// ─── Orders ───────────────────────────────────────────────────────────────────
+
+export const ordersApi = {
+  getAll: (status?: OrderStatus) =>
+    client
+      .get<ApiResponse<Order[]>>('/orders', { params: status ? { status } : {} })
+      .then((r) => r.data.data),
+
+  getById: (id: string) =>
+    client.get<ApiResponse<Order>>(`/orders/${id}`).then((r) => r.data.data),
+
+  create: (body: CreateOrderRequest) =>
+    client.post<ApiResponse<Order>>('/orders', body).then((r) => r.data.data),
+
+  markDelivered: (id: string) =>
+    client.patch<ApiResponse<Order>>(`/orders/${id}/deliver`).then((r) => r.data.data),
+
+  generateSuggestion: (orderId: string, triggerReason: 'INITIAL' | 'AGENT_OFFLINE', offlineAgentId?: string) =>
+    client
+      .post<ApiResponse<Suggestion>>(`/orders/${orderId}/suggest`, {
+        triggerReason,
+        offlineAgentId,
+      })
+      .then((r) => r.data.data),
+}
+
+// ─── Suggestions ──────────────────────────────────────────────────────────────
+
+export const suggestionsApi = {
+  getAll: (status?: SuggestionStatus) =>
+    client
+      .get<ApiResponse<Suggestion[]>>('/suggestions', {
+        params: status ? { status } : {},
+      })
+      .then((r) => r.data.data),
+
+  review: (id: string, body: UpdateSuggestionRequest) =>
+    client
+      .patch<ApiResponse<Suggestion>>(`/suggestions/${id}`, body)
+      .then((r) => r.data.data),
+}
+</file>
+
+<file path="src/lib/utils.ts">
+import { clsx, type ClassValue } from 'clsx'
+import { formatDistanceToNow, format } from 'date-fns'
+import type { AgentStatus, OrderStatus, SuggestionStatus, Priority } from '@/types'
+
+export function cn(...inputs: ClassValue[]) {
+  return clsx(inputs)
+}
+
+export function formatRelativeTime(dateStr: string): string {
+  try {
+    return formatDistanceToNow(new Date(dateStr), { addSuffix: true })
+  } catch {
+    return dateStr
+  }
+}
+
+export function formatDateTime(dateStr: string): string {
+  try {
+    return format(new Date(dateStr), 'MMM d, HH:mm')
+  } catch {
+    return dateStr
+  }
+}
+
+export function agentStatusMeta(status: AgentStatus) {
+  const map = {
+    AVAILABLE: { label: 'Available', color: 'text-emerald-400', bg: 'bg-emerald-500/10', dot: 'bg-emerald-400' },
+    BUSY:      { label: 'Busy',      color: 'text-amber-400',   bg: 'bg-amber-500/10',   dot: 'bg-amber-400' },
+    OFFLINE:   { label: 'Offline',   color: 'text-slate-500',   bg: 'bg-slate-500/10',   dot: 'bg-slate-500' },
+  }
+  return map[status]
+}
+
+export function orderStatusMeta(status: OrderStatus) {
+  const map = {
+    ASSIGNED:              { label: 'Assigned',           color: 'text-blue-400',    bg: 'bg-blue-500/10' },
+    REASSIGNMENT_PENDING:  { label: 'Needs Reassignment', color: 'text-amber-400',   bg: 'bg-amber-500/10' },
+    REASSIGNED:            { label: 'Reassigned',         color: 'text-emerald-400', bg: 'bg-emerald-500/10' },
+    DELIVERED:             { label: 'Delivered',          color: 'text-slate-500',   bg: 'bg-slate-500/10' },
+  }
+  return map[status]
+}
+
+export function suggestionStatusMeta(status: SuggestionStatus) {
+  const map = {
+    PENDING:  { label: 'Pending Review', color: 'text-amber-400',   bg: 'bg-amber-500/10' },
+    ACCEPTED: { label: 'Accepted',       color: 'text-emerald-400', bg: 'bg-emerald-500/10' },
+    REJECTED: { label: 'Rejected',       color: 'text-rose-400',    bg: 'bg-rose-500/10' },
+  }
+  return map[status]
+}
+
+export function priorityMeta(priority: Priority) {
+  const map = {
+    LOW:     { label: 'Low',     color: 'text-slate-500' },
+    NORMAL:  { label: 'Normal',  color: 'text-slate-400' },
+    HIGH:    { label: 'High',    color: 'text-amber-400' },
+    PREMIUM: { label: 'Premium', color: 'text-rose-400' },
+  }
+  return map[priority] ?? map.NORMAL
+}
+
+export function confidenceColor(confidence: number): string {
+  if (confidence >= 0.8) return 'text-emerald-400'
+  if (confidence >= 0.5) return 'text-amber-400'
+  return 'text-rose-400'
+}
+</file>
+
+<file path="src/main.tsx">
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ToastProvider } from '@/components/ui/Toast'
+import App from './App'
+import './index.css'
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: true,
+    },
+  },
+})
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <ToastProvider>
+          <App />
+        </ToastProvider>
+      </BrowserRouter>
+    </QueryClientProvider>
+  </React.StrictMode>
+)
+</file>
+
+<file path="src/pages/AgentsPage.tsx">
+import { Users } from 'lucide-react'
+import { PageHeader } from '@/components/layout/PageHeader'
+import { AgentCard } from '@/components/agents/AgentCard'
+import { PageSpinner } from '@/components/ui/Spinner'
+import { EmptyState } from '@/components/ui/EmptyState'
+import { useAgents } from '@/hooks/useAgents'
+import type { AgentStatus } from '@/types'
+import { useState } from 'react'
+import { cn } from '@/lib/utils'
+
+const FILTERS: { label: string; value: AgentStatus | undefined }[] = [
+  { label: 'All', value: undefined },
+  { label: 'Available', value: 'AVAILABLE' },
+  { label: 'Busy', value: 'BUSY' },
+  { label: 'Offline', value: 'OFFLINE' },
+]
+
+export function AgentsPage() {
+  const [filter, setFilter] = useState<AgentStatus | undefined>(undefined)
+  const { data: agents, isLoading } = useAgents()
+
+  const filtered = agents?.filter((a) => !filter || a.status === filter) ?? []
+
+  return (
+    <div className="px-7 pb-10">
+      <PageHeader
+        title="Fleet Roster"
+        subtitle={`${agents?.length ?? 0} agents · auto-refreshes`}
+      />
+
+      {/* Filter tabs */}
+      <div className="flex gap-1 mb-6 bg-surface-800 border border-border-subtle rounded-lg p-1 w-fit">
+        {FILTERS.map(({ label, value }) => {
+          const count = value ? agents?.filter((a) => a.status === value).length : agents?.length
+          return (
+            <button
+              key={label}
+              onClick={() => setFilter(value)}
+              className={cn(
+                'px-4 py-1.5 rounded text-xs font-medium transition-all duration-150',
+                filter === value
+                  ? 'bg-surface-600 text-slate-100'
+                  : 'text-slate-500 hover:text-slate-300'
+              )}
+            >
+              {label}
+              {count !== undefined && (
+                <span className={cn(
+                  'ml-1.5 text-[10px] font-mono',
+                  filter === value ? 'text-slate-400' : 'text-slate-700'
+                )}>
+                  {count}
+                </span>
+              )}
+            </button>
+          )
+        })}
+      </div>
+
+      {isLoading ? (
+        <PageSpinner />
+      ) : filtered.length === 0 ? (
+        <EmptyState
+          icon={<Users size={28} />}
+          title="No agents found"
+          description="No agents match the selected filter."
+        />
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+          {filtered.map((agent) => (
+            <AgentCard key={agent.id} agent={agent} />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+</file>
+
+<file path="src/pages/DashboardPage.tsx">
+import { ShieldAlert, Package2, Users, CheckCircle2, RefreshCw } from 'lucide-react'
+import { PageHeader } from '@/components/layout/PageHeader'
+import { StatCard } from '@/components/dashboard/StatCard'
+import { AgentLoadBar } from '@/components/dashboard/AgentLoadBar'
+import { SuggestionCard } from '@/components/suggestions/SuggestionCard'
+import { Card, CardHeader, CardBody } from '@/components/ui/Card'
+import { PageSpinner } from '@/components/ui/Spinner'
+import { EmptyState } from '@/components/ui/EmptyState'
+import { Button } from '@/components/ui/Button'
+import { useAgents } from '@/hooks/useAgents'
+import { useOrders } from '@/hooks/useOrders'
+import { useSuggestions } from '@/hooks/useSuggestions'
+import { useQueryClient } from '@tanstack/react-query'
+
+export function DashboardPage() {
+  const { data: agents, isLoading: loadingAgents }         = useAgents()
+  const { data: orders, isLoading: loadingOrders }         = useOrders()
+  const { data: pending, isLoading: loadingSuggestions }   = useSuggestions('PENDING')
+  const qc = useQueryClient()
+
+  const agenticSuggestions = pending?.filter((s) => s.triggerReason === 'AGENT_OFFLINE') ?? []
+  const manualSuggestions  = pending?.filter((s) => s.triggerReason === 'INITIAL') ?? []
+
+  const stats = {
+    available:  agents?.filter((a) => a.status === 'AVAILABLE').length ?? 0,
+    offline:    agents?.filter((a) => a.status === 'OFFLINE').length ?? 0,
+    pending:    orders?.filter((o) => o.status === 'REASSIGNMENT_PENDING').length ?? 0,
+    delivered:  orders?.filter((o) => o.status === 'DELIVERED').length ?? 0,
+  }
+
+  const refreshAll = () => qc.invalidateQueries()
+
+  return (
+    <div className="px-7 pb-10">
+      <PageHeader
+        title="Operations Dashboard"
+        subtitle="Live fleet status · auto-refreshes every 4 seconds"
+        action={
+          <Button variant="ghost" size="sm" onClick={refreshAll}>
+            <RefreshCw size={12} />
+            Refresh
+          </Button>
+        }
+      />
+
+      {/* Stats strip */}
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 mb-6">
+        <StatCard label="Agents Available" value={stats.available} accent="emerald" />
+        <StatCard
+          label="Pending Suggestions"
+          value={pending?.length ?? 0}
+          accent={pending?.length ? 'amber' : 'none'}
+          pulse={(pending?.length ?? 0) > 0}
+          sub={agenticSuggestions.length > 0 ? `${agenticSuggestions.length} from auto re-plan` : undefined}
+        />
+        <StatCard
+          label="Needs Reassignment"
+          value={stats.pending}
+          accent={stats.pending > 0 ? 'rose' : 'none'}
+        />
+        <StatCard label="Delivered Today" value={stats.delivered} accent="none" />
+      </div>
+
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
+        {/* Left: pending suggestions */}
+        <div className="xl:col-span-2 space-y-3">
+          <div className="flex items-center justify-between mb-1">
+            <h2 className="text-sm font-semibold text-slate-300 flex items-center gap-2">
+              <ShieldAlert size={14} className="text-amber-400" />
+              Pending Review
+              {pending && pending.length > 0 && (
+                <span className="bg-amber-500 text-surface-900 text-[10px] font-bold rounded-full px-1.5 py-0.5 font-mono">
+                  {pending.length}
+                </span>
+              )}
+            </h2>
+          </div>
+
+          {loadingSuggestions ? (
+            <PageSpinner />
+          ) : pending?.length === 0 ? (
+            <Card>
+              <EmptyState
+                icon={<CheckCircle2 size={28} />}
+                title="All clear"
+                description="No suggestions waiting for review. The agentic re-plan loop is standing by."
+              />
+            </Card>
+          ) : (
+            <>
+              {/* Agentic re-plans first — they're urgent */}
+              {agenticSuggestions.length > 0 && (
+                <div className="space-y-2">
+                  <p className="text-[10px] font-mono text-amber-500/70 uppercase tracking-widest px-1">
+                    Auto Re-plan · Agent went offline
+                  </p>
+                  {agenticSuggestions.map((s) => (
+                    <SuggestionCard key={s.id} suggestion={s} />
+                  ))}
+                </div>
+              )}
+              {manualSuggestions.length > 0 && (
+                <div className="space-y-2 mt-3">
+                  {agenticSuggestions.length > 0 && (
+                    <p className="text-[10px] font-mono text-slate-600 uppercase tracking-widest px-1">
+                      Manual Requests
+                    </p>
+                  )}
+                  {manualSuggestions.map((s) => (
+                    <SuggestionCard key={s.id} suggestion={s} />
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+        </div>
+
+        {/* Right: agent load */}
+        <div className="space-y-5">
+          <Card>
+            <CardHeader>
+              <h2 className="text-sm font-semibold text-slate-300 flex items-center gap-2">
+                <Users size={14} className="text-slate-500" />
+                Agent Load
+              </h2>
+            </CardHeader>
+            <CardBody className="py-3">
+              {loadingAgents ? (
+                <PageSpinner />
+              ) : (
+                <div className="divide-y divide-border-subtle">
+                  {agents?.map((a) => <AgentLoadBar key={a.id} agent={a} />)}
+                </div>
+              )}
+            </CardBody>
+          </Card>
+
+          {/* Recent orders needing action */}
+          <Card>
+            <CardHeader>
+              <h2 className="text-sm font-semibold text-slate-300 flex items-center gap-2">
+                <Package2 size={14} className="text-slate-500" />
+                Needs Reassignment
+              </h2>
+            </CardHeader>
+            <CardBody className="py-2 space-y-0">
+              {loadingOrders ? (
+                <PageSpinner />
+              ) : (
+                <>
+                  {orders
+                    ?.filter((o) => o.status === 'REASSIGNMENT_PENDING')
+                    .map((order) => (
+                      <div key={order.id} className="flex items-center justify-between py-2.5 border-b border-border-subtle last:border-0">
+                        <div>
+                          <p className="text-xs text-slate-300 truncate max-w-[160px]">{order.description}</p>
+                          <p className="text-[11px] font-mono text-slate-600">{order.id}</p>
+                        </div>
+                        <span className="text-[10px] font-mono text-amber-400 bg-amber-500/10 border border-amber-500/20 rounded px-1.5 py-0.5">
+                          Pending
+                        </span>
+                      </div>
+                    ))
+                  }
+                  {orders?.filter((o) => o.status === 'REASSIGNMENT_PENDING').length === 0 && (
+                    <p className="text-xs text-slate-600 py-3 text-center">No orders pending reassignment</p>
+                  )}
+                </>
+              )}
+            </CardBody>
+          </Card>
+        </div>
+      </div>
+    </div>
+  )
+}
+</file>
+
+<file path="src/pages/OrdersPage.tsx">
+import { useState } from 'react'
+import { Package, Plus } from 'lucide-react'
+import { PageHeader } from '@/components/layout/PageHeader'
+import { OrderRow } from '@/components/orders/OrderRow'
+import { CreateOrderModal } from '@/components/orders/CreateOrderModal'
+import { Card } from '@/components/ui/Card'
+import { Button } from '@/components/ui/Button'
+import { PageSpinner } from '@/components/ui/Spinner'
+import { EmptyState } from '@/components/ui/EmptyState'
+import { useOrders } from '@/hooks/useOrders'
+import type { OrderStatus } from '@/types'
+import { cn } from '@/lib/utils'
+
+const FILTERS: { label: string; value: OrderStatus | undefined }[] = [
+  { label: 'All', value: undefined },
+  { label: 'Assigned', value: 'ASSIGNED' },
+  { label: 'Needs Reassignment', value: 'REASSIGNMENT_PENDING' },
+  { label: 'Reassigned', value: 'REASSIGNED' },
+  { label: 'Delivered', value: 'DELIVERED' },
+]
+
+export function OrdersPage() {
+  const [filter, setFilter] = useState<OrderStatus | undefined>(undefined)
+  const [showModal, setShowModal] = useState(false)
+  const { data: orders, isLoading } = useOrders()
+
+  const filtered = orders?.filter((o) => !filter || o.status === filter) ?? []
+
+  return (
+    <div className="px-7 pb-10">
+      <PageHeader
+        title="Order Board"
+        subtitle={`${orders?.length ?? 0} orders in system`}
+        action={
+          <Button variant="primary" size="sm" onClick={() => setShowModal(true)}>
+            <Plus size={13} />
+            New Order
+          </Button>
+        }
+      />
+
+      {/* Filter tabs */}
+      <div className="flex gap-1 mb-5 bg-surface-800 border border-border-subtle rounded-lg p-1 w-fit flex-wrap">
+        {FILTERS.map(({ label, value }) => {
+          const count = value ? orders?.filter((o) => o.status === value).length : orders?.length
+          return (
+            <button
+              key={label}
+              onClick={() => setFilter(value)}
+              className={cn(
+                'px-3 py-1.5 rounded text-xs font-medium transition-all duration-150',
+                filter === value
+                  ? 'bg-surface-600 text-slate-100'
+                  : 'text-slate-500 hover:text-slate-300',
+                value === 'REASSIGNMENT_PENDING' && filter === value && 'text-amber-300'
+              )}
+            >
+              {label}
+              {count !== undefined && (
+                <span className={cn(
+                  'ml-1.5 text-[10px] font-mono',
+                  value === 'REASSIGNMENT_PENDING' && count > 0 ? 'text-amber-500' : 'text-slate-700'
+                )}>
+                  {count}
+                </span>
+              )}
+            </button>
+          )
+        })}
+      </div>
+
+      <Card>
+        {/* Table header */}
+        <div className="flex items-center gap-4 px-5 py-2.5 border-b border-border-subtle">
+          <div className="w-7 shrink-0" />
+          <div className="flex-1">
+            <span className="text-[10px] font-mono text-slate-600 uppercase tracking-wider">Description / Route</span>
+          </div>
+          <span className="text-[10px] font-mono text-slate-600 uppercase tracking-wider w-16 shrink-0">Priority</span>
+          <span className="text-[10px] font-mono text-slate-600 uppercase tracking-wider w-32 shrink-0">Status</span>
+          <span className="text-[10px] font-mono text-slate-600 uppercase tracking-wider w-20 shrink-0 hidden xl:block">Created</span>
+          <div className="w-32 shrink-0" />
+        </div>
+
+        {isLoading ? (
+          <PageSpinner />
+        ) : filtered.length === 0 ? (
+          <EmptyState
+            icon={<Package size={28} />}
+            title="No orders"
+            description="No orders match the selected filter."
+            action={
+              <Button variant="primary" size="sm" onClick={() => setShowModal(true)}>
+                <Plus size={12} />
+                Create order
+              </Button>
+            }
+          />
+        ) : (
+          filtered.map((order) => <OrderRow key={order.id} order={order} />)
+        )}
+      </Card>
+
+      {showModal && <CreateOrderModal onClose={() => setShowModal(false)} />}
+    </div>
+  )
+}
+</file>
+
+<file path="src/pages/SuggestionsPage.tsx">
+import { useState } from 'react'
+import { BrainCircuit } from 'lucide-react'
+import { PageHeader } from '@/components/layout/PageHeader'
+import { SuggestionCard } from '@/components/suggestions/SuggestionCard'
+import { PageSpinner } from '@/components/ui/Spinner'
+import { EmptyState } from '@/components/ui/EmptyState'
+import { useSuggestions } from '@/hooks/useSuggestions'
+import type { SuggestionStatus } from '@/types'
+import { cn } from '@/lib/utils'
+
+const FILTERS: { label: string; value: SuggestionStatus | undefined }[] = [
+  { label: 'All', value: undefined },
+  { label: 'Pending', value: 'PENDING' },
+  { label: 'Accepted', value: 'ACCEPTED' },
+  { label: 'Rejected', value: 'REJECTED' },
+]
+
+export function SuggestionsPage() {
+  const [filter, setFilter] = useState<SuggestionStatus | undefined>('PENDING')
+  const { data: all, isLoading }   = useSuggestions()
+  const { data: pending }          = useSuggestions('PENDING')
+
+  const displayed = filter ? all?.filter((s) => s.status === filter) : all
+
+  const agenticCount = pending?.filter((s) => s.triggerReason === 'AGENT_OFFLINE').length ?? 0
+
+  return (
+    <div className="px-7 pb-10">
+      <PageHeader
+        title="AI Suggestions"
+        subtitle="Reassignment recommendations from the routing engine"
+      />
+
+      {/* Agentic alert banner */}
+      {agenticCount > 0 && (
+        <div className="mb-5 flex items-center gap-3 px-4 py-3 bg-amber-500/8 border border-amber-500/25 rounded-lg animate-slide-in">
+          <div className="w-2 h-2 rounded-full bg-amber-400 animate-ping-slow" />
+          <div>
+            <p className="text-sm font-medium text-amber-300">
+              {agenticCount} agentic re-plan{agenticCount > 1 ? 's' : ''} waiting for review
+            </p>
+            <p className="text-xs text-amber-500/70 mt-0.5">
+              These were triggered automatically when an agent went offline
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Filter tabs */}
+      <div className="flex gap-1 mb-5 bg-surface-800 border border-border-subtle rounded-lg p-1 w-fit">
+        {FILTERS.map(({ label, value }) => {
+          const count = value ? all?.filter((s) => s.status === value).length : all?.length
+          return (
+            <button
+              key={label}
+              onClick={() => setFilter(value)}
+              className={cn(
+                'px-4 py-1.5 rounded text-xs font-medium transition-all duration-150',
+                filter === value
+                  ? 'bg-surface-600 text-slate-100'
+                  : 'text-slate-500 hover:text-slate-300'
+              )}
+            >
+              {label}
+              {count !== undefined && (
+                <span className={cn(
+                  'ml-1.5 text-[10px] font-mono',
+                  value === 'PENDING' && (count ?? 0) > 0 ? 'text-amber-400' : 'text-slate-700'
+                )}>
+                  {count}
+                </span>
+              )}
+            </button>
+          )
+        })}
+      </div>
+
+      {isLoading ? (
+        <PageSpinner />
+      ) : displayed?.length === 0 ? (
+        <EmptyState
+          icon={<BrainCircuit size={28} />}
+          title="No suggestions"
+          description={
+            filter === 'PENDING'
+              ? 'No suggestions waiting for review. Set an agent offline to trigger the agentic re-plan loop.'
+              : 'No suggestions match this filter.'
+          }
+        />
+      ) : (
+        <div className="space-y-3">
+          {displayed?.map((s) => <SuggestionCard key={s.id} suggestion={s} />)}
+        </div>
+      )}
+    </div>
+  )
+}
+</file>
+
+<file path="src/types/index.ts">
+// ─── Enums ────────────────────────────────────────────────────────────────────
+
+export type AgentStatus = 'AVAILABLE' | 'BUSY' | 'OFFLINE'
+export type OrderStatus = 'ASSIGNED' | 'REASSIGNMENT_PENDING' | 'REASSIGNED' | 'DELIVERED'
+export type SuggestionStatus = 'PENDING' | 'ACCEPTED' | 'REJECTED'
+export type SuggestionDecision = 'ACCEPT' | 'REJECT'
+export type TriggerReason = 'INITIAL' | 'AGENT_OFFLINE'
+export type RoutingStrategyType = 'AI' | 'RULE'
+export type WeightClass = 'LIGHT' | 'HEAVY'
+export type Priority = 'LOW' | 'NORMAL' | 'HIGH' | 'PREMIUM'
+
+// ─── API Wrapper ───────────────────────────────────────────────────────────────
+
+export interface ApiResponse<T> {
+  success: boolean
+  message: string
+  data: T
+  timestamp: string
+}
+
+export interface ErrorResponse {
+  status: number
+  error: string
+  message: string
+  path: string
+  timestamp: string
+}
+
+// ─── Agent ────────────────────────────────────────────────────────────────────
+
+export interface Agent {
+  id: string
+  name: string
+  status: AgentStatus
+  activeOrderCount: number
+  currentZone: string | null
+  maxCapacity: number | null
+  supportedWeightClasses: WeightClass[]
+}
+
+// ─── Order ────────────────────────────────────────────────────────────────────
+
+export interface Order {
+  id: string
+  description: string
+  assignedAgentId: string
+  assignedAgentName: string
+  status: OrderStatus
+  pickupZone: string | null
+  dropoffZone: string | null
+  weightClass: WeightClass | null
+  priority: Priority
+  slaDeadline: string | null
+  createdAt: string
+}
+
+// ─── Suggestion ───────────────────────────────────────────────────────────────
+
+export interface Suggestion {
+  id: string
+  orderId: string
+  orderDescription: string
+  recommendedAgentId: string
+  recommendedAgentName: string
+  confidence: number
+  reasoning: string
+  strategy: RoutingStrategyType
+  triggerReason: TriggerReason
+  status: SuggestionStatus
+  fallbackUsed: boolean
+  createdAt: string
+  reviewedAt: string | null
+}
+
+// ─── Requests ─────────────────────────────────────────────────────────────────
+
+export interface CreateOrderRequest {
+  description: string
+  assignedAgentId: string
+}
+
+export interface UpdateAgentStatusRequest {
+  status: AgentStatus
+}
+
+export interface UpdateSuggestionRequest {
+  decision: SuggestionDecision
+}
+</file>
+
+<file path="src/vite-env.d.ts">
+/// <reference types="vite/client" />
+</file>
+
+<file path="tailwind.config.js">
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        surface: {
+          900: '#0D0F12',
+          800: '#13161B',
+          700: '#1A1E25',
+          600: '#222830',
+          500: '#2C3340',
+        },
+        border: {
+          subtle: '#1F2430',
+          default: '#2A3040',
+          strong: '#384050',
+        },
+        amber: {
+          50:  '#FFFBEB',
+          100: '#FEF3C7',
+          400: '#FBBF24',
+          500: '#F59E0B',
+          600: '#D97706',
+        },
+        blue: {
+          400: '#60A5FA',
+          500: '#3B82F6',
+          600: '#2563EB',
+        },
+        emerald: {
+          400: '#34D399',
+          500: '#10B981',
+        },
+        rose: {
+          400: '#FB7185',
+          500: '#F43F5E',
+        },
+        slate: {
+          300: '#CBD5E1',
+          400: '#94A3B8',
+          500: '#64748B',
+          600: '#475569',
+        },
+      },
+      fontFamily: {
+        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', '"Fira Code"', 'monospace'],
+      },
+      animation: {
+        'slide-in': 'slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+        'pulse-amber': 'pulseAmber 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'fade-in': 'fadeIn 0.2s ease-out',
+        'ping-slow': 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+      },
+      keyframes: {
+        slideIn: {
+          '0%': { opacity: '0', transform: 'translateY(-8px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        pulseAmber: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.5' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+      },
+      boxShadow: {
+        'card': '0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3)',
+        'card-hover': '0 4px 12px rgba(0,0,0,0.5)',
+        'glow-amber': '0 0 12px rgba(245,158,11,0.15)',
+        'glow-blue':  '0 0 12px rgba(59,130,246,0.15)',
+      },
+    },
+  },
+  plugins: [],
+}
+</file>
+
+<file path="tsconfig.json">
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "ignoreDeprecations": "6.0",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
+</file>
+
+<file path="tsconfig.node.json">
+{
+  "compilerOptions": {
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "types": ["node"]
+  },
+  "include": ["vite.config.ts"]
+}
+</file>
+
+<file path="vite.config.ts">
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import path from 'path'
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
+  server: {
+    port: 5173,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+      },
+      '/actuator': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+      },
+    },
+  },
+})
+</file>
+
+<file path="ziprun-web/.gitignore">
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+</file>
+
+<file path="ziprun-web/eslint.config.js">
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
+import { defineConfig, globalIgnores } from 'eslint/config'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      js.configs.recommended,
+      tseslint.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
+    ],
+    languageOptions: {
+      globals: globals.browser,
+    },
+  },
+])
+</file>
+
+<file path="ziprun-web/index.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ziprun-web</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+</file>
+
+<file path="ziprun-web/package.json">
+{
+  "name": "ziprun-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "eslint": "^10.5.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "globals": "^17.6.0",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.61.0",
+    "vite": "^8.1.0"
+  }
+}
+</file>
+
+<file path="ziprun-web/public/favicon.svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="46" fill="none" viewBox="0 0 48 46"><path fill="#863bff" d="M25.946 44.938c-.664.845-2.021.375-2.021-.698V33.937a2.26 2.26 0 0 0-2.262-2.262H10.287c-.92 0-1.456-1.04-.92-1.788l7.48-10.471c1.07-1.497 0-3.578-1.842-3.578H1.237c-.92 0-1.456-1.04-.92-1.788L10.013.474c.214-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.471c-1.07 1.498 0 3.579 1.842 3.579h11.377c.943 0 1.473 1.088.89 1.83L25.947 44.94z" style="fill:#863bff;fill:color(display-p3 .5252 .23 1);fill-opacity:1"/><mask id="a" width="48" height="46" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha"><path fill="#000" d="M25.842 44.938c-.664.844-2.021.375-2.021-.698V33.937a2.26 2.26 0 0 0-2.262-2.262H10.183c-.92 0-1.456-1.04-.92-1.788l7.48-10.471c1.07-1.498 0-3.579-1.842-3.579H1.133c-.92 0-1.456-1.04-.92-1.787L9.91.473c.214-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.471c-1.07 1.498 0 3.578 1.842 3.578h11.377c.943 0 1.473 1.088.89 1.832L25.843 44.94z" style="fill:#000;fill-opacity:1"/></mask><g mask="url(#a)"><g filter="url(#b)"><ellipse cx="5.508" cy="14.704" fill="#ede6ff" rx="5.508" ry="14.704" style="fill:#ede6ff;fill:color(display-p3 .9275 .9033 1);fill-opacity:1" transform="matrix(.00324 1 1 -.00324 -4.47 31.516)"/></g><g filter="url(#c)"><ellipse cx="10.399" cy="29.851" fill="#ede6ff" rx="10.399" ry="29.851" style="fill:#ede6ff;fill:color(display-p3 .9275 .9033 1);fill-opacity:1" transform="matrix(.00324 1 1 -.00324 -39.328 7.883)"/></g><g filter="url(#d)"><ellipse cx="5.508" cy="30.487" fill="#7e14ff" rx="5.508" ry="30.487" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.814 -25.913 -14.639)scale(1 -1)"/></g><g filter="url(#e)"><ellipse cx="5.508" cy="30.599" fill="#7e14ff" rx="5.508" ry="30.599" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.814 -32.644 -3.334)scale(1 -1)"/></g><g filter="url(#f)"><ellipse cx="5.508" cy="30.599" fill="#7e14ff" rx="5.508" ry="30.599" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="matrix(.00324 1 1 -.00324 -34.34 30.47)"/></g><g filter="url(#g)"><ellipse cx="14.072" cy="22.078" fill="#ede6ff" rx="14.072" ry="22.078" style="fill:#ede6ff;fill:color(display-p3 .9275 .9033 1);fill-opacity:1" transform="rotate(93.35 24.506 48.493)scale(-1 1)"/></g><g filter="url(#h)"><ellipse cx="3.47" cy="21.501" fill="#7e14ff" rx="3.47" ry="21.501" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.009 28.708 47.59)scale(-1 1)"/></g><g filter="url(#i)"><ellipse cx="3.47" cy="21.501" fill="#7e14ff" rx="3.47" ry="21.501" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.009 28.708 47.59)scale(-1 1)"/></g><g filter="url(#j)"><ellipse cx=".387" cy="8.972" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(39.51 .387 8.972)"/></g><g filter="url(#k)"><ellipse cx="47.523" cy="-6.092" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 47.523 -6.092)"/></g><g filter="url(#l)"><ellipse cx="41.412" cy="6.333" fill="#47bfff" rx="5.971" ry="9.665" style="fill:#47bfff;fill:color(display-p3 .2799 .748 1);fill-opacity:1" transform="rotate(37.892 41.412 6.333)"/></g><g filter="url(#m)"><ellipse cx="-1.879" cy="38.332" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 -1.88 38.332)"/></g><g filter="url(#n)"><ellipse cx="-1.879" cy="38.332" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 -1.88 38.332)"/></g><g filter="url(#o)"><ellipse cx="35.651" cy="29.907" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 35.651 29.907)"/></g><g filter="url(#p)"><ellipse cx="38.418" cy="32.4" fill="#47bfff" rx="5.971" ry="15.297" style="fill:#47bfff;fill:color(display-p3 .2799 .748 1);fill-opacity:1" transform="rotate(37.892 38.418 32.4)"/></g></g><defs><filter id="b" width="60.045" height="41.654" x="-19.77" y="16.149" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="7.659"/></filter><filter id="c" width="90.34" height="51.437" x="-54.613" y="-7.533" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="7.659"/></filter><filter id="d" width="79.355" height="29.4" x="-49.64" y="2.03" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="e" width="79.579" height="29.4" x="-45.045" y="20.029" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="f" width="79.579" height="29.4" x="-43.513" y="21.178" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="g" width="74.749" height="58.852" x="15.756" y="-17.901" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="7.659"/></filter><filter id="h" width="61.377" height="25.362" x="23.548" y="2.284" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="i" width="61.377" height="25.362" x="23.548" y="2.284" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="j" width="56.045" height="63.649" x="-27.636" y="-22.853" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="k" width="54.814" height="64.646" x="20.116" y="-38.415" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="l" width="33.541" height="35.313" x="24.641" y="-11.323" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="m" width="54.814" height="64.646" x="-29.286" y="6.009" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="n" width="54.814" height="64.646" x="-29.286" y="6.009" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="o" width="54.814" height="64.646" x="8.244" y="-2.416" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="p" width="39.409" height="43.623" x="18.713" y="10.588" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter></defs></svg>
+</file>
+
+<file path="ziprun-web/public/icons.svg">
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="bluesky-icon" viewBox="0 0 16 17">
+    <g clip-path="url(#bluesky-clip)"><path fill="#08060d" d="M7.75 7.735c-.693-1.348-2.58-3.86-4.334-5.097-1.68-1.187-2.32-.981-2.74-.79C.188 2.065.1 2.812.1 3.251s.241 3.602.398 4.13c.52 1.744 2.367 2.333 4.07 2.145-2.495.37-4.71 1.278-1.805 4.512 3.196 3.309 4.38-.71 4.987-2.746.608 2.036 1.307 5.91 4.93 2.746 2.72-2.746.747-4.143-1.747-4.512 1.702.189 3.55-.4 4.07-2.145.156-.528.397-3.691.397-4.13s-.088-1.186-.575-1.406c-.42-.19-1.06-.395-2.741.79-1.755 1.24-3.64 3.752-4.334 5.099"/></g>
+    <defs><clipPath id="bluesky-clip"><path fill="#fff" d="M.1.85h15.3v15.3H.1z"/></clipPath></defs>
+  </symbol>
+  <symbol id="discord-icon" viewBox="0 0 20 19">
+    <path fill="#08060d" d="M16.224 3.768a14.5 14.5 0 0 0-3.67-1.153c-.158.286-.343.67-.47.976a13.5 13.5 0 0 0-4.067 0c-.128-.306-.317-.69-.476-.976A14.4 14.4 0 0 0 3.868 3.77C1.546 7.28.916 10.703 1.231 14.077a14.7 14.7 0 0 0 4.5 2.306q.545-.748.965-1.587a9.5 9.5 0 0 1-1.518-.74q.191-.14.372-.293c2.927 1.369 6.107 1.369 8.999 0q.183.152.372.294-.723.437-1.52.74.418.838.963 1.588a14.6 14.6 0 0 0 4.504-2.308c.37-3.911-.63-7.302-2.644-10.309m-9.13 8.234c-.878 0-1.599-.82-1.599-1.82 0-.998.705-1.82 1.6-1.82.894 0 1.614.82 1.599 1.82.001 1-.705 1.82-1.6 1.82m5.91 0c-.878 0-1.599-.82-1.599-1.82 0-.998.705-1.82 1.6-1.82.893 0 1.614.82 1.599 1.82 0 1-.706 1.82-1.6 1.82"/>
+  </symbol>
+  <symbol id="documentation-icon" viewBox="0 0 21 20">
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="m15.5 13.333 1.533 1.322c.645.555.967.833.967 1.178s-.322.623-.967 1.179L15.5 18.333m-3.333-5-1.534 1.322c-.644.555-.966.833-.966 1.178s.322.623.966 1.179l1.534 1.321"/>
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M17.167 10.836v-4.32c0-1.41 0-2.117-.224-2.68-.359-.906-1.118-1.621-2.08-1.96-.599-.21-1.349-.21-2.848-.21-2.623 0-3.935 0-4.983.369-1.684.591-3.013 1.842-3.641 3.428C3 6.449 3 7.684 3 10.154v2.122c0 2.558 0 3.838.706 4.726q.306.383.713.671c.76.536 1.79.64 3.581.66"/>
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M3 10a2.78 2.78 0 0 1 2.778-2.778c.555 0 1.209.097 1.748-.047.48-.129.854-.503.982-.982.145-.54.048-1.194.048-1.749a2.78 2.78 0 0 1 2.777-2.777"/>
+  </symbol>
+  <symbol id="github-icon" viewBox="0 0 19 19">
+    <path fill="#08060d" fill-rule="evenodd" d="M9.356 1.85C5.05 1.85 1.57 5.356 1.57 9.694a7.84 7.84 0 0 0 5.324 7.44c.387.079.528-.168.528-.376 0-.182-.013-.805-.013-1.454-2.165.467-2.616-.935-2.616-.935-.349-.91-.864-1.143-.864-1.143-.71-.48.051-.48.051-.48.787.051 1.2.805 1.2.805.695 1.194 1.817.857 2.268.649.064-.507.27-.857.49-1.052-1.728-.182-3.545-.857-3.545-3.87 0-.857.31-1.558.8-2.104-.078-.195-.349-1 .077-2.078 0 0 .657-.208 2.14.805a7.5 7.5 0 0 1 1.946-.26c.657 0 1.328.092 1.946.26 1.483-1.013 2.14-.805 2.14-.805.426 1.078.155 1.883.078 2.078.502.546.799 1.247.799 2.104 0 3.013-1.818 3.675-3.558 3.87.284.247.528.714.528 1.454 0 1.052-.012 1.896-.012 2.156 0 .208.142.455.528.377a7.84 7.84 0 0 0 5.324-7.441c.013-4.338-3.48-7.844-7.773-7.844" clip-rule="evenodd"/>
+  </symbol>
+  <symbol id="social-icon" viewBox="0 0 20 20">
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M12.5 6.667a4.167 4.167 0 1 0-8.334 0 4.167 4.167 0 0 0 8.334 0"/>
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M2.5 16.667a5.833 5.833 0 0 1 8.75-5.053m3.837.474.513 1.035c.07.144.257.282.414.309l.93.155c.596.1.736.536.307.965l-.723.73a.64.64 0 0 0-.152.531l.207.903c.164.715-.213.991-.84.618l-.872-.52a.63.63 0 0 0-.577 0l-.872.52c-.624.373-1.003.094-.84-.618l.207-.903a.64.64 0 0 0-.152-.532l-.723-.729c-.426-.43-.289-.864.306-.964l.93-.156a.64.64 0 0 0 .412-.31l.513-1.034c.28-.562.735-.562 1.012 0"/>
+  </symbol>
+  <symbol id="x-icon" viewBox="0 0 19 19">
+    <path fill="#08060d" fill-rule="evenodd" d="M1.893 1.98c.052.072 1.245 1.769 2.653 3.77l2.892 4.114c.183.261.333.48.333.486s-.068.089-.152.183l-.522.593-.765.867-3.597 4.087c-.375.426-.734.834-.798.905a1 1 0 0 0-.118.148c0 .01.236.017.664.017h.663l.729-.83c.4-.457.796-.906.879-.999a692 692 0 0 0 1.794-2.038c.034-.037.301-.34.594-.675l.551-.624.345-.392a7 7 0 0 1 .34-.374c.006 0 .93 1.306 2.052 2.903l2.084 2.965.045.063h2.275c1.87 0 2.273-.003 2.266-.021-.008-.02-1.098-1.572-3.894-5.547-2.013-2.862-2.28-3.246-2.273-3.266.008-.019.282-.332 2.085-2.38l2-2.274 1.567-1.782c.022-.028-.016-.03-.65-.03h-.674l-.3.342a871 871 0 0 1-1.782 2.025c-.067.075-.405.458-.75.852a100 100 0 0 1-.803.91c-.148.172-.299.344-.99 1.127-.304.343-.32.358-.345.327-.015-.019-.904-1.282-1.976-2.808L6.365 1.85H1.8zm1.782.91 8.078 11.294c.772 1.08 1.413 1.973 1.425 1.984.016.017.241.02 1.05.017l1.03-.004-2.694-3.766L7.796 5.75 5.722 2.852l-1.039-.004-1.039-.004z" clip-rule="evenodd"/>
+  </symbol>
+</svg>
+</file>
+
+<file path="ziprun-web/README.md">
+# React + TypeScript + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+
+```
+</file>
+
+<file path="ziprun-web/src/App.css">
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+</file>
+
+<file path="ziprun-web/src/App.tsx">
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from './assets/vite.svg'
+import heroImg from './assets/hero.png'
+import './App.css'
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+      <section id="center">
+        <div className="hero">
+          <img src={heroImg} className="base" width="170" height="179" alt="" />
+          <img src={reactLogo} className="framework" alt="React logo" />
+          <img src={viteLogo} className="vite" alt="Vite logo" />
+        </div>
+        <div>
+          <h1>Get started</h1>
+          <p>
+            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+          </p>
+        </div>
+        <button
+          type="button"
+          className="counter"
+          onClick={() => setCount((count) => count + 1)}
+        >
+          Count is {count}
+        </button>
+      </section>
+
+      <div className="ticks"></div>
+
+      <section id="next-steps">
+        <div id="docs">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#documentation-icon"></use>
+          </svg>
+          <h2>Documentation</h2>
+          <p>Your questions, answered</p>
+          <ul>
+            <li>
+              <a href="https://vite.dev/" target="_blank">
+                <img className="logo" src={viteLogo} alt="" />
+                Explore Vite
+              </a>
+            </li>
+            <li>
+              <a href="https://react.dev/" target="_blank">
+                <img className="button-icon" src={reactLogo} alt="" />
+                Learn more
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="social">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#social-icon"></use>
+          </svg>
+          <h2>Connect with us</h2>
+          <p>Join the Vite community</p>
+          <ul>
+            <li>
+              <a href="https://github.com/vitejs/vite" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#github-icon"></use>
+                </svg>
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://chat.vite.dev/" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#discord-icon"></use>
+                </svg>
+                Discord
+              </a>
+            </li>
+            <li>
+              <a href="https://x.com/vite_js" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#x-icon"></use>
+                </svg>
+                X.com
+              </a>
+            </li>
+            <li>
+              <a href="https://bsky.app/profile/vite.dev" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#bluesky-icon"></use>
+                </svg>
+                Bluesky
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <div className="ticks"></div>
+      <section id="spacer"></section>
+    </>
+  )
+}
+
+export default App
+</file>
+
+<file path="ziprun-web/src/assets/react.svg">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="35.93" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 228"><path fill="#00D8FF" d="M210.483 73.824a171.49 171.49 0 0 0-8.24-2.597c.465-1.9.893-3.777 1.273-5.621c6.238-30.281 2.16-54.676-11.769-62.708c-13.355-7.7-35.196.329-57.254 19.526a171.23 171.23 0 0 0-6.375 5.848a155.866 155.866 0 0 0-4.241-3.917C100.759 3.829 77.587-4.822 63.673 3.233C50.33 10.957 46.379 33.89 51.995 62.588a170.974 170.974 0 0 0 1.892 8.48c-3.28.932-6.445 1.924-9.474 2.98C17.309 83.498 0 98.307 0 113.668c0 15.865 18.582 31.778 46.812 41.427a145.52 145.52 0 0 0 6.921 2.165a167.467 167.467 0 0 0-2.01 9.138c-5.354 28.2-1.173 50.591 12.134 58.266c13.744 7.926 36.812-.22 59.273-19.855a145.567 145.567 0 0 0 5.342-4.923a168.064 168.064 0 0 0 6.92 6.314c21.758 18.722 43.246 26.282 56.54 18.586c13.731-7.949 18.194-32.003 12.4-61.268a145.016 145.016 0 0 0-1.535-6.842c1.62-.48 3.21-.974 4.76-1.488c29.348-9.723 48.443-25.443 48.443-41.52c0-15.417-17.868-30.326-45.517-39.844Zm-6.365 70.984c-1.4.463-2.836.91-4.3 1.345c-3.24-10.257-7.612-21.163-12.963-32.432c5.106-11 9.31-21.767 12.459-31.957c2.619.758 5.16 1.557 7.61 2.4c23.69 8.156 38.14 20.213 38.14 29.504c0 9.896-15.606 22.743-40.946 31.14Zm-10.514 20.834c2.562 12.94 2.927 24.64 1.23 33.787c-1.524 8.219-4.59 13.698-8.382 15.893c-8.067 4.67-25.32-1.4-43.927-17.412a156.726 156.726 0 0 1-6.437-5.87c7.214-7.889 14.423-17.06 21.459-27.246c12.376-1.098 24.068-2.894 34.671-5.345a134.17 134.17 0 0 1 1.386 6.193ZM87.276 214.515c-7.882 2.783-14.16 2.863-17.955.675c-8.075-4.657-11.432-22.636-6.853-46.752a156.923 156.923 0 0 1 1.869-8.499c10.486 2.32 22.093 3.988 34.498 4.994c7.084 9.967 14.501 19.128 21.976 27.15a134.668 134.668 0 0 1-4.877 4.492c-9.933 8.682-19.886 14.842-28.658 17.94ZM50.35 144.747c-12.483-4.267-22.792-9.812-29.858-15.863c-6.35-5.437-9.555-10.836-9.555-15.216c0-9.322 13.897-21.212 37.076-29.293c2.813-.98 5.757-1.905 8.812-2.773c3.204 10.42 7.406 21.315 12.477 32.332c-5.137 11.18-9.399 22.249-12.634 32.792a134.718 134.718 0 0 1-6.318-1.979Zm12.378-84.26c-4.811-24.587-1.616-43.134 6.425-47.789c8.564-4.958 27.502 2.111 47.463 19.835a144.318 144.318 0 0 1 3.841 3.545c-7.438 7.987-14.787 17.08-21.808 26.988c-12.04 1.116-23.565 2.908-34.161 5.309a160.342 160.342 0 0 1-1.76-7.887Zm110.427 27.268a347.8 347.8 0 0 0-7.785-12.803c8.168 1.033 15.994 2.404 23.343 4.08c-2.206 7.072-4.956 14.465-8.193 22.045a381.151 381.151 0 0 0-7.365-13.322Zm-45.032-43.861c5.044 5.465 10.096 11.566 15.065 18.186a322.04 322.04 0 0 0-30.257-.006c4.974-6.559 10.069-12.652 15.192-18.18ZM82.802 87.83a323.167 323.167 0 0 0-7.227 13.238c-3.184-7.553-5.909-14.98-8.134-22.152c7.304-1.634 15.093-2.97 23.209-3.984a321.524 321.524 0 0 0-7.848 12.897Zm8.081 65.352c-8.385-.936-16.291-2.203-23.593-3.793c2.26-7.3 5.045-14.885 8.298-22.6a321.187 321.187 0 0 0 7.257 13.246c2.594 4.48 5.28 8.868 8.038 13.147Zm37.542 31.03c-5.184-5.592-10.354-11.779-15.403-18.433c4.902.192 9.899.29 14.978.29c5.218 0 10.376-.117 15.453-.343c-4.985 6.774-10.018 12.97-15.028 18.486Zm52.198-57.817c3.422 7.8 6.306 15.345 8.596 22.52c-7.422 1.694-15.436 3.058-23.88 4.071a382.417 382.417 0 0 0 7.859-13.026a347.403 347.403 0 0 0 7.425-13.565Zm-16.898 8.101a358.557 358.557 0 0 1-12.281 19.815a329.4 329.4 0 0 1-23.444.823c-7.967 0-15.716-.248-23.178-.732a310.202 310.202 0 0 1-12.513-19.846h.001a307.41 307.41 0 0 1-10.923-20.627a310.278 310.278 0 0 1 10.89-20.637l-.001.001a307.318 307.318 0 0 1 12.413-19.761c7.613-.576 15.42-.876 23.31-.876H128c7.926 0 15.743.303 23.354.883a329.357 329.357 0 0 1 12.335 19.695a358.489 358.489 0 0 1 11.036 20.54a329.472 329.472 0 0 1-11 20.722Zm22.56-122.124c8.572 4.944 11.906 24.881 6.52 51.026c-.344 1.668-.73 3.367-1.15 5.09c-10.622-2.452-22.155-4.275-34.23-5.408c-7.034-10.017-14.323-19.124-21.64-27.008a160.789 160.789 0 0 1 5.888-5.4c18.9-16.447 36.564-22.941 44.612-18.3ZM128 90.808c12.625 0 22.86 10.235 22.86 22.86s-10.235 22.86-22.86 22.86s-22.86-10.235-22.86-22.86s10.235-22.86 22.86-22.86Z"></path></svg>
+</file>
+
+<file path="ziprun-web/src/assets/vite.svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="77" height="47" fill="none" aria-labelledby="vite-logo-title" viewBox="0 0 77 47"><title id="vite-logo-title">Vite</title><style>.parenthesis{fill:#000}@media (prefers-color-scheme:dark){.parenthesis{fill:#fff}}</style><path fill="#9135ff" d="M40.151 45.71c-.663.844-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.493c-.92 0-1.457-1.04-.92-1.788l7.479-10.471c1.07-1.498 0-3.578-1.842-3.578H15.443c-.92 0-1.456-1.04-.92-1.788l9.696-13.576c.213-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.472c-1.07 1.497 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.087.89 1.83L40.153 45.712z"/><mask id="a" width="48" height="47" x="14" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha"><path fill="#000" d="M40.047 45.71c-.663.843-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.389c-.92 0-1.457-1.04-.92-1.788l7.479-10.472c1.07-1.497 0-3.578-1.842-3.578H15.34c-.92 0-1.456-1.04-.92-1.788l9.696-13.575c.213-.297.556-.474.92-.474H53.93c.92 0 1.456 1.04.92 1.788L47.37 13.03c-1.07 1.498 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.088.89 1.831L40.049 45.712z"/></mask><g mask="url(#a)"><g filter="url(#b)"><ellipse cx="5.508" cy="14.704" fill="#eee6ff" rx="5.508" ry="14.704" transform="rotate(269.814 20.96 11.29)scale(-1 1)"/></g><g filter="url(#c)"><ellipse cx="10.399" cy="29.851" fill="#eee6ff" rx="10.399" ry="29.851" transform="rotate(89.814 -16.902 -8.275)scale(1 -1)"/></g><g filter="url(#d)"><ellipse cx="5.508" cy="30.487" fill="#8900ff" rx="5.508" ry="30.487" transform="rotate(89.814 -19.197 -7.127)scale(1 -1)"/></g><g filter="url(#e)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.928 4.177)scale(1 -1)"/></g><g filter="url(#f)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.738 5.52)scale(1 -1)"/></g><g filter="url(#g)"><ellipse cx="14.072" cy="22.078" fill="#eee6ff" rx="14.072" ry="22.078" transform="rotate(93.35 31.245 55.578)scale(-1 1)"/></g><g filter="url(#h)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#i)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#j)"><ellipse cx="14.592" cy="9.743" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(39.51 14.592 9.743)"/></g><g filter="url(#k)"><ellipse cx="61.728" cy="-5.321" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 61.728 -5.32)"/></g><g filter="url(#l)"><ellipse cx="55.618" cy="7.104" fill="#00c2ff" rx="5.971" ry="9.665" transform="rotate(37.892 55.618 7.104)"/></g><g filter="url(#m)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#n)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#o)"><ellipse cx="49.857" cy="30.678" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 49.857 30.678)"/></g><g filter="url(#p)"><ellipse cx="52.623" cy="33.171" fill="#00c2ff" rx="5.971" ry="15.297" transform="rotate(37.892 52.623 33.17)"/></g></g><path d="M6.919 0c-9.198 13.166-9.252 33.575 0 46.789h6.215c-9.25-13.214-9.196-33.623 0-46.789zm62.424 0h-6.215c9.198 13.166 9.252 33.575 0 46.789h6.215c9.25-13.214 9.196-33.623 0-46.789" class="parenthesis"/><defs><filter id="b" width="60.045" height="41.654" x="-5.564" y="16.92" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="c" width="90.34" height="51.437" x="-40.407" y="-6.762" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="d" width="79.355" height="29.4" x="-35.435" y="2.801" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="e" width="79.579" height="29.4" x="-30.84" y="20.8" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="f" width="79.579" height="29.4" x="-29.307" y="21.949" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="g" width="74.749" height="58.852" x="29.961" y="-17.13" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="h" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="i" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="j" width="56.045" height="63.649" x="-13.43" y="-22.082" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="k" width="54.814" height="64.646" x="34.321" y="-37.644" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="l" width="33.541" height="35.313" x="38.847" y="-10.552" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="m" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="n" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="o" width="54.814" height="64.646" x="22.45" y="-1.645" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="p" width="39.409" height="43.623" x="32.919" y="11.36" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter></defs></svg>
+</file>
+
+<file path="ziprun-web/src/index.css">
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+</file>
+
+<file path="ziprun-web/src/main.tsx">
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.tsx'
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+</file>
+
+<file path="ziprun-web/tsconfig.app.json">
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023", "DOM"],
+    "module": "esnext",
+    "types": ["vite/client"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"]
+}
+</file>
+
+<file path="ziprun-web/tsconfig.json">
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
+</file>
+
+<file path="ziprun-web/tsconfig.node.json">
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023"],
+    "types": ["node"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "module": "nodenext",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["vite.config.ts"]
+}
+</file>
+
+<file path="ziprun-web/vite.config.ts">
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+})
+</file>
+
+</files>
